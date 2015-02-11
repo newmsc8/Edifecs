@@ -119,3 +119,6 @@ for(i in 1:folds) {
 #print(paste("Hamming loss:",hammingLoss(cost.truth, cost.preds, readmit.truth, readmit.preds),sep=" "))
 print(paste("Average accuracy:",averageAccuracy(lp.truths, lp.preds),sep=" "))
 print(paste("Hamming loss:",hammingLoss(lp.truths, lp.preds),sep=" "))
+
+saveRDS(lp.preds,file="lp-preds.rds")
+saveRDS(lp.truths,file="lp-truths.rds")
