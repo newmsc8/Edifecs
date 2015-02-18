@@ -1,5 +1,6 @@
 library(e1071)
 library(rpart)
+library(kernlab)
 
 #computes the average accuracy for multilabel classification (2 labels)
 #averageAccuracy <- function(x.truth, x.preds, y.truth, y.preds) {
@@ -38,13 +39,13 @@ hammingLoss <- function(x.truth, x.preds) {
 }
 
 
-x<-readRDS("siddata.rds")
-x$KEY<-NULL
+x<-readRDS("../data/siddata_log.rds")
+#x$KEY<-NULL
 x$ReadmitAndCostBucket <- paste(x$ReadmitBucket,x$CostBucket,sep=" ")
-x$VisitLink<-NULL
-x$NextAdmitCost<-NULL
-x$DaysBetweenVisits<-NULL
-x$NextAdmitDate<-NULL
+#x$VisitLink<-NULL
+#x$NextAdmitCost<-NULL
+#x$DaysBetweenVisits<-NULL
+#x$NextAdmitDate<-NULL
 x$ReadmitBucket<-as.factor(x$ReadmitBucket)
 x$ReadmitAndCostBucket<-as.factor(x$ReadmitAndCostBucket)
 x$CostBucket<-as.factor(x$CostBucket)
@@ -63,12 +64,15 @@ for(i in c(grep("^CM_",colnames(x)),grep("^REVCD_",colnames(x)),grep("^DXCCS_",c
 for(i in grep("^U_",colnames(x))) {
   	x[,i]<-as.factor(x[,i])
 }
-
 message('factor-ified')
 
 x.shuffle = x[sample(1:nrow(x)), ]
-
 message('shuffled')
+message(nrow(x))
+
+
+#x.shuffle<-x.shuffle[sample(nrow(x.shuffle), 50000),]
+#message('sample')
 
 #cost.preds<-c()
 #readmit.preds<-c()
@@ -90,12 +94,14 @@ for(i in 1:folds) {
   	#cost.model = rpart(CostBucket~., data=x.train[,-which(names(x.shuffle) %in% c("ReadmitBucket","ReadmitAndCostBucket"))], control=rpart.control(cp=0.01))
   	#readmit.model = rpart(ReadmitBucket~., data=x.train[,-which(names(x.shuffle) %in% c("CostBucket","ReadmitAndCostBucket"))], control=rpart.control(cp=0.01))
   	lp.model = rpart(ReadmitAndCostBucket~.,data=x.train,control=rpart.control(cp=0.01))
+	#lp.model = ksvm(formula('ReadmitAndCostBucket~.'),data=x.train)
  
   	print("making predictions")
 
   	#cost.p = predict(cost.model, x.test, type = 'class')
   	#readmit.p = predict(readmit.model, x.test, type = 'class')
   	lp.p = predict(lp.model, x.test, type='class')
+	#lp.p = predict(lp.model, x.test)
   
   	#cost.preds<-c(cost.preds,cost.p)
   	#cost.preds<-factor(cost.preds, levels=1:nlevels(x$CostBucket), labels=levels(x$CostBucket))
@@ -117,8 +123,8 @@ for(i in 1:folds) {
 
 #print(paste("Average accuracy:",averageAccuracy(cost.truth, cost.preds, readmit.truth, readmit.preds),sep=" "))
 #print(paste("Hamming loss:",hammingLoss(cost.truth, cost.preds, readmit.truth, readmit.preds),sep=" "))
-print(paste("Average accuracy:",averageAccuracy(lp.truths, lp.preds),sep=" "))
-print(paste("Hamming loss:",hammingLoss(lp.truths, lp.preds),sep=" "))
+#print(paste("Average accuracy:",averageAccuracy(lp.truths, lp.preds),sep=" "))
+#print(paste("Hamming loss:",hammingLoss(lp.truths, lp.preds),sep=" "))
 
-saveRDS(lp.preds,file="lp-preds.rds")
-saveRDS(lp.truths,file="lp-truths.rds")
+saveRDS(lp.preds,file="lp-preds-log.rds")
+saveRDS(lp.truths,file="lp-truths-log.rds")
