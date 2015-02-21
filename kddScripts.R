@@ -1,6 +1,7 @@
 library(e1071)
 library(rpart)
 library(kernlab)
+library(caret)
 
 #computes the average accuracy for multilabel classification (2 labels)
 #averageAccuracy <- function(x.truth, x.preds, y.truth, y.preds) {
@@ -39,18 +40,24 @@ hammingLoss <- function(x.truth, x.preds) {
 }
 
 
-x<-readRDS("../data/siddata_log.rds")
+x<-readRDS("../data/siddata_filtered.rds")
 #x$KEY<-NULL
+#x.low<-x[x$ReadmitBucket=='Low',]
+#x.low<-x.low[sample(nrow(x.low), 5000),]
+#x.other<-x[x$ReadmitBucket!='Low',]
+#x.other$ReadmitBucket<-'Other'
+#x.other<-x.other[sample(nrow(x.other),5000),]
+#x<-rbind(x.low,x.other)
 x$ReadmitAndCostBucket <- paste(x$ReadmitBucket,x$CostBucket,sep=" ")
 #x$VisitLink<-NULL
 #x$NextAdmitCost<-NULL
 #x$DaysBetweenVisits<-NULL
 #x$NextAdmitDate<-NULL
-x$ReadmitBucket<-as.factor(x$ReadmitBucket)
+#x$ReadmitBucket<-as.factor(x$ReadmitBucket)
 x$ReadmitAndCostBucket<-as.factor(x$ReadmitAndCostBucket)
-x$CostBucket<-as.factor(x$CostBucket)
-x$FEMALE<-as.logical(x$FEMALE)
-x$RACE<-as.factor(x$RACE)
+#x$CostBucket<-as.factor(x$CostBucket)
+#x$FEMALE<-as.logical(x$FEMALE)
+#x$RACE<-as.factor(x$RACE)
 
 x$ReadmitBucket<-NULL
 x$CostBucket<-NULL
@@ -83,6 +90,29 @@ lp.truths<-c()
 
 folds <- 10
 
+print(x.shuffle$ReadmitAndCostBucket[1:10])
+
+#x.shuffle$ReadmitAndCostBucket<-as.character(x.shuffle$ReadmitAndCostBucket)
+
+#df.highhigh<-x.shuffle[x.shuffle$ReadmitAndCostBucket=="High High",]
+#df.other<-x.shuffle[x.shuffle$ReadmitAndCostBucket!="High High",]
+#df.highhigh<-df.highhigh[sample(1:nrow(df.highhigh),5000),]
+#df.other<-df.other[sample(1:nrow(df.other),5000),]
+#df.highhigh$CLASS<-'high'
+#df.other$CLASS<-'other'
+#x.shuffle<-rbind(df.highhigh,df.other)
+#x.shuffle<-x.shuffle[sample(1:nrow(x.shuffle)),]
+#x.shuffle$ReadmitAndCostBucket<-NULL
+#x.shuffle$CLASS<-as.factor(x.shuffle$CLASS)
+
+x.small<-x.shuffle[,sample(1:ncol(x.shuffle),10)]
+x.small$ReadmitAndCostBucket<-x.shuffle$ReadmitAndCostBucket
+x.shuffle<-x.small
+
+#x.small$ReadmitAndCostBucket<-x.shuffle<-ReadmitAndCostBucket
+#x.shuffle<-x.small
+print(colnames(x.shuffle))
+
 for(i in 1:folds) {
   	print(i)
   
@@ -95,6 +125,7 @@ for(i in 1:folds) {
   	#readmit.model = rpart(ReadmitBucket~., data=x.train[,-which(names(x.shuffle) %in% c("CostBucket","ReadmitAndCostBucket"))], control=rpart.control(cp=0.01))
   	lp.model = rpart(ReadmitAndCostBucket~.,data=x.train,control=rpart.control(cp=0.01))
 	#lp.model = ksvm(formula('ReadmitAndCostBucket~.'),data=x.train)
+	#lp.model = rpart(CLASS~.,data=x.train,control=rpart.control(cp=0.01))
  
   	print("making predictions")
 
@@ -108,14 +139,17 @@ for(i in 1:folds) {
   	#readmit.preds<-c(readmit.preds,readmit.p)
   	#readmit.preds<-factor(readmit.preds, levels=1:nlevels(x$ReadmitBucket), labels=levels(x$ReadmitBucket))
   	lp.preds<-c(lp.preds,lp.p)
+	if(i==1) {print(lp.preds)}
   	lp.preds<-factor(lp.preds, levels=1:nlevels(x$ReadmitAndCostBucket), labels=levels(x$ReadmitAndCostBucket))
-  
+	#lp.preds<-factor(lp.preds, levels=1:nlevels(x.shuffle$CLASS), labels=levels(x.shuffle$CLASS))  
+
   	#cost.truths<-c(cost.truths,x.test$CostBucket)
   	#cost.truths<-factor(cost.truths, levels=1:nlevels(x$CostBucket), labels=levels(x$CostBucket))
   	#readmit.truths<-c(readmit.truths,x.test$ReadmitBucket)
   	#readmit.truths<-factor(readmit.truths, levels=1:nlevels(x$ReadmitBucket), labels=levels(x$ReadmitBucket))
   	lp.truths<-c(lp.truths,x.test$ReadmitAndCostBucket)
   	lp.truths<-factor(lp.truths, levels=1:nlevels(x$ReadmitAndCostBucket), labels=levels(x$ReadmitAndCostBucket))
+	#lp.truths<-factor(lp.truths, levels=1:nlevels(x.shuffle$CLASS), labels=levels(x.shuffle$CLASS)) 
 
   	message('done-zo')
   
@@ -126,5 +160,7 @@ for(i in 1:folds) {
 #print(paste("Average accuracy:",averageAccuracy(lp.truths, lp.preds),sep=" "))
 #print(paste("Hamming loss:",hammingLoss(lp.truths, lp.preds),sep=" "))
 
-saveRDS(lp.preds,file="lp-preds-log.rds")
-saveRDS(lp.truths,file="lp-truths-log.rds")
+print(confusionMatrix(lp.preds,lp.truths))
+
+saveRDS(lp.preds,file="lowcost-preds-bin.rds")
+saveRDS(lp.truths,file="lowcost-truths-bin.rds")
