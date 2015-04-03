@@ -1,0 +1,109 @@
+Loading required package: lattice
+Loading required package: ggplot2
+Loading required package: methods
+file name: ../data/siddata.rds -- model type: tree -- sample size: 0
+cp: 0.01
+remove unnecessary buckets
+ncol: 836
+shuffle
+1
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+2
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+3
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+4
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+5
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+6
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+7
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+8
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made
+60+ day risk cost model made
+[1] "making predictions"
+prediction done for risk
+prediction done for cost of 30day risk
+prediction done for cost of 60day risk
+prediction done for cost of 60day+ risk
+stored in preds and truths
+9
+making models
+risk model made
+30 day risk cost model made
+60 day risk cost model made

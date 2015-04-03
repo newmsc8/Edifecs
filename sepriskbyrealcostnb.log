@@ -1,0 +1,107 @@
+Loading required package: lattice
+Loading required package: ggplot2
+Loading required package: methods
+file name: ../data/siddata.rds -- model type: nb -- sample size: 0
+remove unnecessary buckets
+ncol: 836
+1
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+2
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+3
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+4
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+5
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+6
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+7
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+8
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+9
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+10
+making models
+low cost risk model made
+medium cost risk model made
+high cost risk model made
+[1] "making predictions"
+prediction done for risk of low cost
+prediction done for risk of med cost
+prediction done for risk of high cost
+stored in preds and truths
+risk accuracy: 0.458241905271608
