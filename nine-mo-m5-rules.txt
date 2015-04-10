@@ -1,0 +1,538 @@
+  Rule 1: [3941 cases, mean 269.6, range 0 to 121306, est err 329.2]
+
+    if
+	DX_196 > 0
+    then
+	outcome = -53 + 71 PR_.99 - 1580 ADMITS + 44 NCHRONIC
+
+  Rule 2: [17222 cases, mean 2868.4, range 0 to 778626, est err 3014.5]
+
+    if
+	REVUNITS_250 <= 68
+	REVUNITS_174 <= 0
+	previous_cost <= 642876
+    then
+	outcome = -56 + 56 REVUNITS_460 + 53 NCHRONIC + 337 ADMITS - 22 DX_.999
+
+  Rule 3: [16833 cases, mean 2905.2, range 0 to 778626, est err 2944.4]
+
+    if
+	AGE <= 69
+	LOS <= 21
+	DX_213 <= 2
+	DX_199 <= 1
+	DX_259 <= 2
+    then
+	outcome = -248852.8 + 25237 DX_259 + 47900 DX_138 + 27.7 REVUNITS_250
+	          + 613 PR_.99 - 177 REVUNITS_300 - 0.116 previous_cost
+	          + 4799 DX_151
+
+  Rule 4: [17244 cases, mean 2960.1, range 0 to 778626, est err 2964.2]
+
+    if
+	REVUNITS_250 <= 68
+	previous_cost <= 642876
+    then
+	outcome = -7.5 + 0.5 REVUNITS_250
+
+  Rule 5: [16896 cases, mean 3349.9, range 0 to 3179412, est err 3375.1]
+
+    if
+	DX_138 <= 0
+	DX_259 <= 2
+	REVUNITS_258 <= 5
+	previous_cost <= 642876
+    then
+	outcome = -3115 - 2511 ADMITS + 100 PR_.99 + 6 REVUNITS_258
+	          + 147 NCHRONIC - 0.012 previous_cost + 76 LOS - 48 AGE
+	          + 121 REVUNITS_450 + 736 DX_59 + 829 DX_138 - 620 DX_98
+	          + 25 DX_.999 + 1140 DX_159 + 1730 DX_102 - 374 REVUNITS_307
+	          - 634 DX_657 + 23 REVUNITS_272
+
+  Rule 6: [4047 cases, mean 4088.3, range 0 to 428896, est err 4313.7]
+
+    if
+	NCHRONIC <= 7
+	DX_213 <= 2
+	REVUNITS_310 <= 14
+	REVUNITS_250 > 68
+    then
+	outcome = -175 - 4965 ADMITS + 190 PR_.99 + 181 NCHRONIC - 760 DX_98
+	          + 29 DX_.999
+
+  Rule 7: [1843 cases, mean 6409.5, range 0 to 297494, est err 6764.1]
+
+    if
+	AGE > 69
+	LOS <= 21
+	DX_213 <= 2
+	DX_259 <= 2
+	REVUNITS_250 > 68
+    then
+	outcome = 1449.4 - 1536 ADMITS - 0.021 previous_cost + 40 PR_.99
+	          + 82 LOS - 36 REVUNITS_390 + 182 REVUNITS_260
+	          + 398 REVUNITS_434 + 42 DX_.999 - 37 AGE + 104 REVUNITS_450
+	          + 30 REVUNITS_272 + 52 NCHRONIC + 640 DX_59 + 1035 DX_159
+	          + 1102 DX_237
+
+  Rule 8: [3709 cases, mean 6439.0, range 0 to 3179412, est err 6962.9]
+
+    if
+	AGE <= 69
+	LOS <= 21
+	DX_138 <= 3
+	DX_259 <= 2
+	DX_96 <= 0
+	REVUNITS_250 > 68
+    then
+	outcome = -3675.5 + 74 PR_.99 + 1488 DX_108 + 1945 DX_127
+	          - 0.013 previous_cost + 1270 DX_95 - 380 REVUNITS_730 - 74 LOS
+	          + 1043 DX_151 + 49 REVUNITS_278 - 116 REVUNITS_120
+	          + 2949 CM_LYTES + 129 REVUNITS_450 + 9 REVUNITS_300
+	          - 60 REVUNITS_420 + 949 DX_138 - 1157 DX_157 - 672 DX_98
+	          + 1576 DX_103 - 11 REVUNITS_270 + 1563 CM_HTN_C
+	          + 2 REVUNITS_637
+
+  Rule 9: [2131 cases, mean 7147.4, range 0 to 424816, est err 7330.7]
+
+    if
+	AGE > 69
+	NCHRONIC > 7
+	LOS <= 21
+	DX_259 <= 2
+    then
+	outcome = 1763.9 - 2055 ADMITS + 86 PR_.99 - 163 NCHRONIC
+	          - 26 REVUNITS_390 - 0.006 previous_cost + 453 DX_108
+
+  Rule 10: [82 cases, mean 8898.6, range 0 to 405932, est err 9824.8]
+
+    if
+	REVUNITS_450 <= 5
+	previous_cost > 642876
+    then
+	outcome = -388 - 1204 REVUNITS_127 - 1677 ADMITS + 57 PR_.99
+	          + 182 REVUNITS_450 + 33 DX_.999 - 20 REVUNITS_390
+	          + 46 NCHRONIC
+
+  Rule 11: [2518 cases, mean 9043.1, range 0 to 767908, est err 9323.4]
+
+    if
+	NCHRONIC > 7
+	DX_213 <= 2
+	DX_138 <= 0
+	DX_259 <= 2
+	DX_95 <= 1
+	PR_45 <= 1
+	previous_cost <= 642876
+    then
+	outcome = 112.8 + 173 LOS - 0.017 previous_cost - 80 AGE + 95 NCHRONIC
+	          + 39 REVUNITS_272 + 1120 DX_138 + 1514 DX_159 + 33 DX_.999
+	          + 114 REVUNITS_450 - 537 REVUNITS_307 - 396 ADMITS
+	          - 814 DX_657 + 580 DX_59
+
+  Rule 12: [125 cases, mean 9673.3, range 0 to 187038, est err 11474.3]
+
+    if
+	AGE > 79
+	NCHRONIC > 7
+	LOS > 21
+	DX_213 <= 2
+	DX_259 <= 2
+	PR_45 <= 1
+	REVUNITS_258 > 5
+    then
+	outcome = -745.4 - 1817 ADMITS + 70 PR_.99 + 109 NCHRONIC
+	          - 0.01 previous_cost - 51 AGE + 53 LOS + 826 DX_59
+	          + 99 REVUNITS_450 + 847 DX_138 + 24 DX_.999 + 1576 DX_102
+
+  Rule 13: [1518 cases, mean 10147.8, range 0 to 767908, est err 10417.3]
+
+    if
+	DX_213 <= 2
+	DX_96 > 0
+	previous_cost <= 642876
+    then
+	outcome = -612 + 18 PR_.99
+
+  Rule 14: [123 cases, mean 11089.9, range 0 to 145402, est err 12964.0]
+
+    if
+	NCHRONIC > 7
+	LOS > 21
+	DX_213 <= 2
+	DX_138 > 0
+	DX_259 <= 2
+	DX_.999 <= 73
+	PR_45 <= 1
+	REVUNITS_250 > 68
+	REVUNITS_730 <= 9
+    then
+	outcome = -7047.4 + 2.1 REVUNITS_250 + 2382 DX_138 + 35 PR_.99
+	          - 0.012 previous_cost + 9605 PR_174 - 302 REVUNITS_324
+	          + 40 REVUNITS_272 - 60 NCHRONIC + 1653 DX_130
+	          + 203 REVUNITS_730 - 738 DX_49 + 642 DX_53 + 35 LOS
+
+  Rule 15: [30 cases, mean 13440.6, range 0 to 102684, est err 21147.5]
+
+    if
+	DX_62 > 1
+	PR_.99 <= 374
+	REVUNITS_127 <= 32
+	REVUNITS_637 <= 576
+	previous_cost > 642876
+    then
+	outcome = -17725.4 + 5528 DX_257 + 0.017 previous_cost
+	          - 236 REVUNITS_450 + 510 REVUNITS_127 - 1.4 REVUNITS_636
+	          - 1617 DX_155 + 2756 DX_2
+
+  Rule 16: [327 cases, mean 13454.8, range 0 to 1049303, est err 14586.0]
+
+    if
+	NCHRONIC > 7
+	DX_259 > 2
+	DX_155 <= 3
+	REVUNITS_300 <= 91
+	REVUNITS_250 > 68
+	REVUNITS_402 <= 1
+    then
+	outcome = 200.2 + 49 PR_.99 - 1109 ADMITS - 0.017 previous_cost
+	          + 1712 DX_651 + 1423 DX_96 + 45 LOS + 14 REVUNITS_301
+
+  Rule 17: [30 cases, mean 14211.3, range 0 to 134934, est err 23536.2]
+
+    if
+	NCHRONIC > 7
+	DX_259 > 2
+	DX_157 <= 1
+	REVUNITS_270 > 8
+	REVUNITS_300 <= 91
+	REVUNITS_250 > 68
+	REVUNITS_402 > 1
+	previous_cost <= 642876
+    then
+	outcome = 3800.2 - 14291 DX_157 - 77 REVUNITS_300 + 8986 DX_211
+	          - 463 NCHRONIC + 107 REVUNITS_301 - 1.9 REVUNITS_250
+	          + 718 DX_259 + 12 REVUNITS_270
+
+  Rule 18: [105 cases, mean 15669.0, range 0 to 285544, est err 18092.2]
+
+    if
+	DX_259 > 2
+	DX_157 > 1
+	REVUNITS_300 <= 91
+	previous_cost <= 642876
+    then
+	outcome = -0 - 1741 DX_155 + 933 DX_108 + 1473 DX_205 + 1120 DX_211
+	          - 1232 DX_96
+
+  Rule 19: [213 cases, mean 28886.2, range 0 to 676413, est err 39012.0]
+
+    if
+	NCHRONIC > 7
+	DX_213 <= 2
+	DX_101 <= 7
+	DX_259 > 2
+	DX_155 <= 3
+	REVUNITS_761 <= 2
+	REVUNITS_300 > 91
+	REVUNITS_250 > 68
+	REVUNITS_636 > 1
+	REVUNITS_482 <= 0
+    then
+	outcome = -4990 + 143 REVUNITS_301 + 40 REVUNITS_300 - 4229 DX_155
+	          + 86 PR_.99 + 11 REVUNITS_637 - 24 REVUNITS_360 - 188 NCHRONIC
+	          + 4940 DX_197 + 3868 DX_2 + 3204 DX_105 + 647 REVUNITS_434
+	          - 450 REVUNITS_324 - 1033 REVUNITS_391 + 84 LOS
+	          + 430 REVUNITS_361 - 182 REVUNITS_450 - 96 REVUNITS_460
+	          - 581 ADMITS + 13 REVUNITS_410 - 79 REVUNITS_120 - 415 DX_259
+	          - 90 REVUNITS_260
+
+  Rule 20: [45 cases, mean 35573.4, range 0 to 521425, est err 45603.4]
+
+    if
+	AGE <= 69
+	NCHRONIC > 7
+	LOS <= 21
+	DX_199 > 1
+	DX_259 <= 2
+	DX_96 <= 0
+	REVUNITS_250 > 68
+    then
+	outcome = -1602 + 80.1 REVUNITS_636 + 35036 DX_118 + 10194 DX_50
+
+  Rule 21: [257 cases, mean 37777.8, range 0 to 1476843, est err 39842.9]
+
+    if
+	NCHRONIC > 7
+	DX_101 <= 7
+	DX_259 > 2
+	DX_155 <= 3
+	REVUNITS_300 > 91
+	REVUNITS_250 > 68
+	REVUNITS_636 > 1
+	REVUNITS_482 <= 0
+    then
+	outcome = -13244 + 1715 REVUNITS_761 + 139 REVUNITS_301
+	          - 1477 REVUNITS_324 - 5352 DX_155 - 0.035 previous_cost
+	          + 221 LOS + 5087 DX_2 - 19 REVUNITS_360 + 3740 DX_105
+	          + 1000 ADMITS
+
+  Rule 22: [395 cases, mean 38587.1, range 0 to 1482090, est err 40420.6]
+
+    if
+	AGE <= 79
+	LOS > 21
+	DX_213 <= 2
+	DX_138 <= 0
+	DX_95 > 1
+	PR_45 <= 1
+    then
+	outcome = 3836 + 181 NCHRONIC - 44 AGE - 40 LOS - 0.005 previous_cost
+
+  Rule 23: [36 cases, mean 38746.0, range 0 to 241371, est err 44733.8]
+
+    if
+	PR_.99 <= 374
+	REVUNITS_127 <= 32
+	REVUNITS_450 > 5
+	REVUNITS_637 > 576
+	previous_cost > 642876
+    then
+	outcome = 59393.2 + 2481 REVUNITS_361 - 0.047 previous_cost
+	          + 653 REVUNITS_450 - 5215 DX_49 - 4902 DX_211 - 2381 DX_62
+	          - 1490 PR_216 + 652 DX_257 - 192 REVUNITS_127
+
+  Rule 24: [69 cases, mean 38836.8, range 0 to 349484, est err 65374.2]
+
+    if
+	NCHRONIC > 7
+	DX_259 > 2
+	DX_155 <= 3
+	DX_157 <= 1
+	REVUNITS_270 <= 8
+	REVUNITS_250 > 68
+	REVUNITS_402 > 1
+	REVUNITS_482 <= 0
+    then
+	outcome = -20563.8 + 36665 REVUNITS_270 - 0.286 previous_cost
+	          + 1926 REVUNITS_305 + 8309 REVUNITS_730 + 8303 REVUNITS_206
+
+  Rule 25: [76 cases, mean 40220.8, range 0 to 653012, est err 38032.4]
+
+    if
+	NCHRONIC > 7
+	DX_259 > 2
+	DX_155 <= 3
+	REVUNITS_300 > 91
+	REVUNITS_250 > 68
+	REVUNITS_636 <= 1
+	REVUNITS_482 <= 0
+	previous_cost <= 642876
+    then
+	outcome = 9762 + 603802.2 REVUNITS_636 + 9 REVUNITS_250
+	          - 108 REVUNITS_300 - 1259 REVUNITS_320 + 6118 REVUNITS_921
+	          + 256 NCHRONIC + 5676 DX_159
+
+  Rule 26: [35 cases, mean 47353.5, range 0 to 294588, est err 51634.0]
+
+    if
+	DX_259 > 2
+	DX_155 > 3
+	REVUNITS_636 > 1
+	REVUNITS_637 <= 15
+	previous_cost <= 642876
+    then
+	outcome = -32116 + 2432 PR_.99 - 2489 DX_.999 - 3292 NCHRONIC
+	          + 10066 DX_259 - 12090 DX_155 + 13027 DX_48
+
+  Rule 27: [227 cases, mean 47508.3, range 0 to 1482090, est err 48396.0]
+
+    if
+	NCHRONIC > 21
+	LOS > 41
+	DX_138 <= 0
+	DX_95 > 1
+    then
+	outcome = -7180.9 + 13 REVUNITS_258 - 1948 ADMITS - 103 AGE
+	          + 162 NCHRONIC - 0.016 previous_cost + 43 PR_.99
+	          + 674 REVUNITS_434 + 88 LOS + 58 DX_.999 + 1787 DX_237
+	          + 856 DX_59 + 116 REVUNITS_450 - 0.5 REVUNITS_250
+	          + 66 REVUNITS_306 + 877 DX_660 + 1286 DX_197 + 1048 DX_159
+	          - 970 DX_653 + 1587 DX_102
+
+  Rule 28: [103 cases, mean 53865.0, range 0 to 698826, est err 56019.9]
+
+    if
+	NCHRONIC > 7
+	DX_259 > 2
+	DX_155 > 3
+	REVUNITS_250 > 68
+	REVUNITS_636 > 1
+	REVUNITS_637 > 15
+    then
+	outcome = -18916 + 5770 DX_59 + 113 DX_.999 + 9 REVUNITS_637
+	          + 319 REVUNITS_260 + 765 REVUNITS_434 + 33 PR_.99 - 764 ADMITS
+	          + 65 REVUNITS_430 - 284 REVUNITS_128 - 805 REVUNITS_921
+	          + 33 LOS
+
+  Rule 29: [30 cases, mean 55721.1, range 0 to 352484, est err 39669.5]
+
+    if
+	LOS > 21
+	DX_138 > 0
+	DX_259 <= 2
+	DX_.999 <= 73
+	PR_45 <= 1
+	REVUNITS_730 > 9
+	previous_cost <= 642876
+    then
+	outcome = -6908.8 + 38243 DX_259 + 13.6 REVUNITS_250
+
+  Rule 30: [64 cases, mean 56287.9, range 0 to 423194, est err 54214.3]
+
+    if
+	AGE <= 79
+	NCHRONIC > 21
+	LOS > 21
+	LOS <= 41
+	DX_138 <= 0
+	DX_95 > 1
+	REVUNITS_258 > 5
+	REVUNITS_250 > 68
+	previous_cost <= 642876
+    then
+	outcome = 1775.7 + 10027 DX_199 - 0.006 previous_cost + 23 REVUNITS_272
+	          + 32 LOS
+
+  Rule 31: [22 cases, mean 57427.9, range 0 to 525681, est err 53693.8]
+
+    if
+	NCHRONIC <= 7
+	REVUNITS_310 > 14
+	REVUNITS_250 > 68
+    then
+	outcome = -63939 + 2455 PR_.99 + 516 REVUNITS_300
+
+  Rule 32: [41 cases, mean 58168.9, range 0 to 1242099, est err 66109.2]
+
+    if
+	DX_213 <= 2
+	DX_138 > 0
+	DX_259 <= 2
+	DX_.999 > 73
+	PR_.99 > 207
+	PR_45 <= 1
+    then
+	outcome = -33976 + 258 PR_.99 - 679 NCHRONIC + 5093 DX_138
+
+  Rule 33: [45 cases, mean 61590.5, range 0 to 1049303, est err 76273.9]
+
+    if
+	DX_259 > 2
+	DX_155 <= 3
+	REVUNITS_250 > 68
+	REVUNITS_482 > 0
+	previous_cost <= 642876
+    then
+	outcome = -55734 + 41 REVUNITS_637 - 10243 DX_117 + 38080 REVUNITS_482
+
+  Rule 34: [50 cases, mean 63703.3, range 0 to 405404, est err 63565.2]
+
+    if
+	DX_213 <= 2
+	DX_101 > 7
+	DX_259 > 2
+	DX_155 <= 3
+	REVUNITS_300 > 91
+	REVUNITS_250 > 68
+	REVUNITS_636 > 1
+	REVUNITS_482 <= 0
+	previous_cost <= 642876
+    then
+	outcome = 15238 + 27613 DX_51 - 4369 DX_55 + 8624 DX_117 + 38 PR_.99
+	          - 888 ADMITS - 322 REVUNITS_324 + 25 REVUNITS_301
+	          + 8 REVUNITS_300 + 290 REVUNITS_434 + 1509 DX_2 + 38 LOS
+	          + 193 REVUNITS_361 + 11 REVUNITS_410
+
+  Rule 35: [56 cases, mean 79527.2, range 0 to 585155, est err 74292.0]
+
+    if
+	NCHRONIC > 7
+	LOS > 21
+	DX_213 <= 2
+	DX_138 > 0
+	DX_259 <= 2
+	DX_.999 > 73
+	PR_.99 <= 207
+	PR_45 <= 1
+	REVUNITS_250 > 68
+	previous_cost <= 642876
+    then
+	outcome = -106734.8 + 755 PR_.99 + 66159 DX_197 - 30024 DX_199
+	          + 37836 REVUNITS_610 + 7254 REVUNITS_402 + 0.4 REVUNITS_250
+
+  Rule 36: [24 cases, mean 91269.5, range 0 to 619257, est err 87300.3]
+
+    if
+	LOS > 21
+	DX_259 <= 2
+	PR_45 > 1
+	REVUNITS_250 > 68
+    then
+	outcome = 206073.2 - 1.124 previous_cost + 80072 DX_259 - 3178 NCHRONIC
+	          + 27.2 REVUNITS_250 - 186 REVUNITS_360 + 110590 PR_45
+	          + 54649 PR_63
+
+  Rule 37: [34 cases, mean 121080.3, range 0 to 3179412, est err 128414.4]
+
+    if
+	DX_213 > 2
+	REVUNITS_250 > 68
+	previous_cost <= 642876
+    then
+	outcome = -199 - 1509 ADMITS + 51 PR_.99 + 29 DX_.999 + 42 NCHRONIC
+
+  Rule 38: [34 cases, mean 146378.9, range 0 to 1167080, est err 122605.1]
+
+    if
+	NCHRONIC > 7
+	DX_259 > 2
+	DX_155 > 3
+	REVUNITS_636 <= 1
+	previous_cost <= 642876
+    then
+	outcome = -201939.9 + 147620 REVUNITS_921 + 0.927 previous_cost
+	          + 23734 REVUNITS_320 - 26480 REVUNITS_730 - 62.8 REVUNITS_250
+	          + 59535 DX_117 + 17005 DX_155
+
+  Rule 39: [38 cases, mean 163474.8, range 0 to 1482090, est err 103473.7]
+
+    if
+	DX_62 <= 1
+	PR_.99 <= 374
+	REVUNITS_450 > 5
+	REVUNITS_637 <= 576
+	previous_cost > 642876
+    then
+	outcome = -20548 + 774 REVUNITS_637 + 46006 REVUNITS_127 + 7995 DX_55
+	          + 1089 REVUNITS_302
+
+  Rule 40: [56 cases, mean 222233.9, range 0 to 1576461, est err 191019.3]
+
+    if
+	PR_.99 > 374
+	REVUNITS_127 <= 32
+	previous_cost > 642876
+    then
+	outcome = -71230.2 + 18783 REVUNITS_127 + 45974 DX_135
+	          + 0.058 previous_cost + 10617 DX_145 + 86 PR_.99 - 2486 DX_55
+	          + 3534 DX_155 - 5471 PR_54 + 224 REVUNITS_306 + 4285 DX_141
+	          - 2673 DX_62
+
+  Rule 41: [21 cases, mean 559823.7, range 0 to 7651530, est err 728129.7]
+
+    if
+	REVUNITS_127 > 32
+	previous_cost > 642876
+    then
+	outcome = -1810884 + 1.891 previous_cost

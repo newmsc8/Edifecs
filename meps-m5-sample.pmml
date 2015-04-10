@@ -1,0 +1,124 @@
+<MiningModel functionName="regression">
+  <MiningSchema>
+    <MiningField name="medical.CCCODE9483" usageType="active"/>
+    <MiningField name="medical.CCCODE835" usageType="active"/>
+    <MiningField name="medical.CCCODE3846" usageType="active"/>
+    <MiningField name="medical.CCCODE580" usageType="active"/>
+    <MiningField name="medical.CCCODE184" usageType="supplementary"/>
+    <MiningField name="medical.CCCODE83" usageType="supplementary"/>
+    <MiningField name="Class" usageType="predicted"/>
+    <MiningField name="medical.CCCODE201" usageType="predicted"/>
+  </MiningSchema>
+  <Segmentation multipleModelMethod="modelChain">
+    <Segment id="1">
+      <True/>
+      <TreeModel modelName="meps_m5" functionName="classification" splitCharacteristic="binarySplit">
+        <MiningSchema>
+          <MiningField name="medical.CCCODE9483" usageType="active"/>
+          <MiningField name="medical.CCCODE835" usageType="active"/>
+          <MiningField name="Class" usageType="predicted"/>
+        </MiningSchema>
+        <Output>
+          <OutputField dataType="string" feature="predictedValue" name="PredictedClass" optype="categorical"/>
+        </Output>
+        <Node score="model-1" recordCount="150">
+          <True/>
+          <ScoreDistribution value="model-1" recordCount="50"/>
+          <ScoreDistribution value="model-2" recordCount="50"/>
+          <ScoreDistribution value="model-3" recordCount="50"/>
+          <Node score="model-1" recordCount="50">
+            <SimplePredicate field="medical.CCCODE9483" operator="lessThan" value="2.45"/>
+            <ScoreDistribution value="model-1" recordCount="50"/>
+            <ScoreDistribution value="model-2" recordCount="0"/>
+            <ScoreDistribution value="model-3" recordCount="0"/>
+          </Node>
+          <Node score="model-2" recordCount="100">
+            <SimplePredicate field="medical.CCCODE9483" operator="greaterThan" value="2.45"/>
+            <ScoreDistribution value="model-1" recordCount="0"/>
+            <ScoreDistribution value="model-2" recordCount="50"/>
+            <ScoreDistribution value="model-3" recordCount="50"/>
+            <Node score="model-2" recordCount="54">
+              <SimplePredicate field="medical.CCCODE835" operator="lessThan" value="1.75"/>
+              <ScoreDistribution value="model-1" recordCount="0"/>
+              <ScoreDistribution value="model-2" recordCount="49"/>
+              <ScoreDistribution value="model-3" recordCount="5"/>
+            </Node>
+            <Node score="model-3" recordCount="46">
+              <SimplePredicate field="medical.CCCODE835" operator="greaterThan" value="1.75"/>
+              <ScoreDistribution value="model-1" recordCount="0"/>
+              <ScoreDistribution value="model-2" recordCount="1"/>
+              <ScoreDistribution value="model-3" recordCount="45"/>
+            </Node>
+          </Node>
+        </Node>
+      </TreeModel>
+    </Segment>
+    <Segment id="2">
+      <True/>
+      <MiningModel modelName="medical.CCCODE201" functionName="regression">
+        <MiningSchema>
+          <MiningField name="medical.CCCODE3846" usageType="active"/>
+          <MiningField name="medical.CCCODE580" usageType="active"/>
+          <MiningField name="PredictedClass" usageType="active"/>
+          <MiningField name="medical.CCCODE201" usageType="predicted"/>
+        </MiningSchema>
+        <Output>
+          <OutputField dataType="double" feature="predictedValue" name="pred_cost" optype="continuous"/>
+        </Output>
+        <Segmentation multipleModelMethod="selectFirst">
+          <Segment id="2.1">
+            <SimplePredicate field="PredictedClass" operator="equal" value="model-1"/>
+            <RegressionModel modelName="Setosa_medical.CCCODE201" functionName="regression">
+              <MiningSchema>
+                <MiningField name="medical.CCCODE3846" usageType="active"/>
+                <MiningField name="medical.CCCODE580" usageType="active"/>
+                <MiningField name="medical.CCCODE201" usageType="predicted"/>
+              </MiningSchema>
+              <Output>
+                <OutputField dataType="double" feature="predictedValue" name="Setosa pred_cost" optype="continuous"/>
+              </Output>
+              <RegressionTable intercept="0.3">
+                <NumericPredictor coefficient="0.02" exponent="1" name="medical.CCCODE3846"/>
+                <NumericPredictor coefficient="-0.1" exponent="1" name="medical.CCCODE580"/>
+              </RegressionTable>
+            </RegressionModel>
+          </Segment>
+          <Segment id="2.2">
+            <SimplePredicate field="PredictedClass" operator="equal" value="model-2"/>
+            <RegressionModel modelName="Versicolor_medical.CCCODE201" functionName="regression">
+              <MiningSchema>
+                <MiningField name="medical.CCCODE3846" usageType="active"/>
+                <MiningField name="medical.CCCODE580" usageType="active"/>
+                <MiningField name="medical.CCCODE201" usageType="predicted"/>
+              </MiningSchema>
+              <Output>
+                <OutputField dataType="double" feature="predictedValue" name="Versicolor pred_cost" optype="continuous"/>
+              </Output>
+              <RegressionTable intercept="0.2">
+                <NumericPredictor coefficient="-0.02" exponent="1" name="medical.CCCODE3846"/>
+                <NumericPredictor coefficient="0.1" exponent="1" name="medical.CCCODE580"/>
+              </RegressionTable>
+            </RegressionModel>
+          </Segment>
+          <Segment id="2.3">
+            <SimplePredicate field="PredictedClass" operator="equal" value="model-3"/>
+            <RegressionModel modelName="Virginica_medical.CCCODE201" functionName="regression">
+              <MiningSchema>
+                <MiningField name="medical.CCCODE3846" usageType="active"/>
+                <MiningField name="medical.CCCODE580" usageType="active"/>
+                <MiningField name="medical.CCCODE201" usageType="predicted"/>
+              </MiningSchema>
+              <Output>
+                <OutputField dataType="double" feature="predictedValue" name="Virginica pred_cost" optype="continuous"/>
+              </Output>
+              <RegressionTable intercept="0.1">
+                <NumericPredictor coefficient="0.01" exponent="1" name="medical.CCCODE3846"/>
+                <NumericPredictor coefficient="-0.2" exponent="1" name="medical.CCCODE580"/>
+              </RegressionTable>
+            </RegressionModel>
+          </Segment>
+        </Segmentation>
+      </MiningModel>
+    </Segment>
+  </Segmentation>
+</MiningModel>
